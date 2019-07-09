@@ -1,0 +1,298 @@
+entity DctAtt {
+    nm String,
+    ds String,
+    hdTx String,
+    acrNum String,
+    acrDtTx String,
+    cm String,
+    rm String,
+    nt String,
+    vl Boolean,
+    dl Boolean,
+    usCr String,
+    usUp String,
+    usDl String,
+    crDt Instant,
+    upDt Instant,
+    dlDt Instant
+}
+entity DctPrf {
+    cerN String,
+    stDt Instant,
+    enDt Instant,
+    tp Proof,
+    cm String,
+    rm String,
+    nt String,
+    vl Boolean,
+    dl Boolean,
+    usCr String,
+    usUp String,
+    usDl String,
+    crDt Instant,
+    upDt Instant,
+    dlDt Instant
+}
+entity DctMsr {
+    nm String,
+    fN String,
+    invN String,
+    stDt Instant,
+    enDt Instant,
+    cm String,
+    rm String,
+    nt String,
+    vl Boolean,
+    dl Boolean,
+    usCr String,
+    usUp String,
+    usDl String,
+    crDt Instant,
+    upDt Instant,
+    dlDt Instant
+}
+entity DctTst {
+    nm String,
+    fN String,
+    invN String,
+    stDt Instant,
+    enDt Instant,
+    cm String,
+    rm String,
+    nt String,
+    vl Boolean,
+    dl Boolean,
+    usCr String,
+    usUp String,
+    usDl String,
+    crDt Instant,
+    upDt Instant,
+    dlDt Instant
+}
+entity DctTub {
+    mod String,
+    prtN String,
+    prfN String,
+    prfDt Instant,
+    loLim Float,
+    hiLim Float,
+    enDt Instant,
+    cm String,
+    rm String,
+    nt String,
+    vl Boolean,
+    dl Boolean,
+    usCr String,
+    usUp String,
+    usDl String,
+    crDt Instant,
+    upDt Instant,
+    dlDt Instant
+}
+entity DctDc {
+    cip String,
+    enDt Instant,
+    cm String,
+    rm String,
+    nt String,
+    vl Boolean,
+    dl Boolean,
+    usCr String,
+    usUp String,
+    usDl String,
+    crDt Instant,
+    upDt Instant,
+    dlDt Instant
+}
+entity DctMth {
+    cd String,
+    nm String,
+    cm String,
+    rm String,
+    nt String,
+    vl Boolean,
+    dl Boolean,
+    usCr String,
+    usUp String,
+    usDl String,
+    crDt Instant,
+    upDt Instant,
+    dlDt Instant
+}
+entity DctIndTec {
+    nm String,
+    tecCd String,
+    pdcMr Float,
+    pdcCc Float,
+    danCl DangerClass,
+    rndMth RoundMethod,
+    prbVlO1 Float,
+    prbVlO2 Float,
+    prbVlA1 Float,
+    prbVlA2 Float,
+    selVel Float,
+    selDur Float,
+    cnvFct Float,
+    acr Integer,
+    loLim Float,
+    hiLim Float,
+    prodEnvFct EnvFactors,
+    cm String,
+    rm String,
+    nt String,
+    vl Boolean,
+    dl Boolean,
+    usCr String,
+    usUp String,
+    usDl String,
+    crDt Instant,
+    upDt Instant,
+    dlDt Instant
+}
+entity DctCalCh {
+    nm String,
+    tecCd String,
+    stDt Instant,
+    enDt Instant,
+    parA Float,
+    parB Float,
+    cm String,
+    rm String,
+    nt String,
+    vl Boolean,
+    dl Boolean,
+    usCr String,
+    usUp String,
+    usDl String,
+    crDt Instant,
+    upDt Instant,
+    dlDt Instant
+}
+entity DctSig {
+    cd String,
+    vl String,
+    cm String,
+    rm String,
+    nt String,
+    vl Boolean,
+    dl Boolean,
+    usCr String,
+    usUp String,
+    usDl String,
+    crDt Instant,
+    upDt Instant,
+    dlDt Instant
+}
+entity DctOrg {
+    nm String,
+    adr String,
+    tp Organization,
+    ogrnOgrnip String,
+    inn String,
+    dgN String,
+    dgDt Instant,
+    cm String,
+    rm String,
+    nt String,
+    vl Boolean,
+    dl Boolean,
+    usCr String,
+    usUp String,
+    usDl String,
+    crDt Instant,
+    upDt Instant,
+    dlDt Instant
+}
+entity DctStr {
+    nm String,
+    ds String,
+    cm String,
+    rm String,
+    nt String,
+    vl Boolean,
+    dl Boolean,
+    usCr String,
+    usUp String,
+    usDl String,
+    crDt Instant,
+    upDt Instant,
+    dlDt Instant
+}
+entity DctStrLv {
+    nm String,
+    ds String,
+    cm String,
+    rm String,
+    nt String,
+    vl Boolean,
+    dl Boolean,
+    usCr String,
+    usUp String,
+    usDl String,
+    crDt Instant,
+    upDt Instant,
+    dlDt Instant
+}
+entity DctStrWp {
+    nm String,
+    dur Float,
+    cat String,
+    rm String,
+    nt String,
+    vl Boolean,
+    dl Boolean,
+    usCr String,
+    usUp String,
+    usDl String,
+    crDt Instant,
+    upDt Instant,
+    dlDt Instant
+}
+
+// Enums used in entities
+enum Proof {
+    VERIFICATION, ATTESTATION
+}
+enum DangerClass {
+    FIRST, SECOND, THIRD, FORTH
+}
+enum RoundMethod {
+    COMMON, DEFINED
+}
+enum EnvFactors {
+    CHEMICALS, APFD
+}
+enum Organization {
+    CERTIFICATION_AUTHORITY_RF,
+    LEGAL_ENTITY_RF,
+    INDIVIDUAL_ENTREPRENEUR_RF,
+    INDIVIDUAL, FOREIGN_LEGAL_ENTITY,
+    ISI_PROVIDER
+}
+
+// Relationships for dictionaries
+relationship OneToMany {
+	DctMsr{prf} to DctPrf,
+	DctTst{prf} to DctPrf,
+	DctIndTec{mth} to DctMth ,
+	DctCalCh {indTec} to DctIndTec,
+	DctStr {org} to DctOrg,
+    DctStrLv {lev} to DctStr
+
+}
+
+relationship ManyToOne {
+    DctStrLv {prn} to DctStrLv
+}
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+// Set pagination options
+paginate all with pagination
+// Set service options to all
+service all with serviceImpl
+// Set filter options to all
+filter all
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
